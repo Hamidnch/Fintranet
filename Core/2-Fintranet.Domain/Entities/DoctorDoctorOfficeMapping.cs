@@ -1,5 +1,5 @@
 ﻿using _2_Fintranet.Domain.Commons;
-using _3_Fintranet.Application.Interfaces;
+using _3_Fintranet.Application.Interfaces.Commons;
 
 namespace _2_Fintranet.Domain.Entities
 {

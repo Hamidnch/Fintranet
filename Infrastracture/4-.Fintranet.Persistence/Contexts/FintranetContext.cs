@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using _1_Fintranet.Common.Constants;
-using _3_Fintranet.Application.Interfaces;
+using _3_Fintranet.Application.Interfaces.Commons;
 
 namespace _4_.Fintranet.Persistence.Contexts
 {

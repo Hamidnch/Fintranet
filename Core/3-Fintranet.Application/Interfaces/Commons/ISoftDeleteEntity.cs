@@ -1,4 +1,4 @@
-﻿namespace _3_Fintranet.Application.Interfaces;
+﻿namespace _3_Fintranet.Application.Interfaces.Commons;
 
 /// <summary>
 /// Represents a soft-deleted (without actually deleting from storage) entity
