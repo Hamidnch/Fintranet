@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>_2_Fintranet.Domain</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\Doctor.cs~RF762badb.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1-Fintranet.Common\1-Fintranet.Common.csproj" />
+    <ProjectReference Include="..\3-Fintranet.Application\3-Fintranet.Application.csproj" />
+  </ItemGroup>
+
+</Project>
