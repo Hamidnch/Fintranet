@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\2-Fintranet.Domain\2-Fintranet.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\3-Fintranet.Application\3-Fintranet.Application.csproj" />
   </ItemGroup>
 
 </Project>

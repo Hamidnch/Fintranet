@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\1-Fintranet.Common\1-Fintranet.Common.csproj" />
-    <ProjectReference Include="..\3-Fintranet.Application\3-Fintranet.Application.csproj" />
   </ItemGroup>
 
 </Project>

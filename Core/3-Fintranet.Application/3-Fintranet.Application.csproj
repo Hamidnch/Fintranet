@@ -8,13 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interfaces\IFintranetRepository.cs~RF8aae450.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Doctors\" />
     <Folder Include="Features\DoctorOffices\" />
+    <Folder Include="Features\Doctors\Commands\" />
+    <Folder Include="Features\Doctors\Behaviors\" />
+    <Folder Include="Features\Doctors\Events\" />
+    <Folder Include="Features\Doctors\Notifications\" />
+    <Folder Include="Features\Doctors\Queries\" />
     <Folder Include="Features\Patients\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1-Fintranet.Common\1-Fintranet.Common.csproj" />
+    <ProjectReference Include="..\2-Fintranet.Domain\2-Fintranet.Domain.csproj" />
   </ItemGroup>
 
 </Project>
