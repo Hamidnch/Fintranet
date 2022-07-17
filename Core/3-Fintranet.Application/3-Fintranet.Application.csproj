@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Doctors\" />
+    <Folder Include="Features\DoctorOffices\" />
+    <Folder Include="Features\Patients\" />
+  </ItemGroup>
+
 </Project>
