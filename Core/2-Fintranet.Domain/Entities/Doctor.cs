@@ -4,7 +4,7 @@ using _3_Fintranet.Application.Interfaces;
 namespace _2_Fintranet.Domain.Entities
 {
     /// <summary>
-    /// Represents a Doctor
+    /// Represents a Doctor entity
     /// </summary>
     public class Doctor : Person, IDisplayOrder
     {
@@ -73,13 +73,13 @@ namespace _2_Fintranet.Domain.Entities
         /// </summary>
         public string? PhoneNumber { get; set; }
 
-        //public string FaxNumber { get; set; }
         /// <summary>
-        /// روش نوبت دهی
+        /// Gets or sets the turning method
         /// </summary>
         public TurningMethod? TurningMethod { get; set; }
+        
         /// <summary>
-        /// سابقه طبابت-به سال
+        /// Gets or sets the medical history
         /// </summary>
         public int? MedicalHistory { get; set; }
 
@@ -88,7 +88,7 @@ namespace _2_Fintranet.Domain.Entities
 
         private IReadOnlyCollection<DoctorDoctorOfficeMapping>? _doctorDoctorOfficeMappings;
         /// <summary>
-        /// Gets or sets Doctor-Doctor office mappings
+        /// Gets or sets Doctor - Doctor office mappings
         /// </summary>
         public virtual IReadOnlyCollection<DoctorDoctorOfficeMapping>? DoctorDoctorOfficeMappings
         {
