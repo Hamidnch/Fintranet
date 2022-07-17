@@ -2,7 +2,7 @@
 {
     public class ResponseDoctorDto
     {
-        public IReadOnlyList<DoctorDto> DoctorDtos { get; init; }
+        public IReadOnlyList<DoctorDto<Guid>> DoctorDtos { get; init; }
         public int Rows { get; set; }
     }
 }

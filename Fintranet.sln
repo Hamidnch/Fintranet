@@ -11,21 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{BC0B2EB1-8C99-4431-8C50-015F956BE553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-Fintranet.Common", "Core\1-Fintranet.Common\1-Fintranet.Common.csproj", "{DB3D15CB-4E03-45C0-9F78-1CC1A326E694}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1-Fintranet.Common", "Core\1-Fintranet.Common\1-Fintranet.Common.csproj", "{DB3D15CB-4E03-45C0-9F78-1CC1A326E694}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-Fintranet.Domain", "Core\2-Fintranet.Domain\2-Fintranet.Domain.csproj", "{26DCE93A-571B-408C-ABDE-E123739C9A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2-Fintranet.Domain", "Core\2-Fintranet.Domain\2-Fintranet.Domain.csproj", "{26DCE93A-571B-408C-ABDE-E123739C9A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-Fintranet.Application", "Core\3-Fintranet.Application\3-Fintranet.Application.csproj", "{FEB89F96-2F1E-4D21-BE30-F041E6CBD15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3-Fintranet.Application", "Core\3-Fintranet.Application\3-Fintranet.Application.csproj", "{FEB89F96-2F1E-4D21-BE30-F041E6CBD15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-.Fintranet.Persistence", "Infrastracture\4-.Fintranet.Persistence\4-.Fintranet.Persistence.csproj", "{416B065E-4D51-4212-8E4B-314878661497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-Fintranet.Persistence", "Infrastracture\4-.Fintranet.Persistence\4-Fintranet.Persistence.csproj", "{416B065E-4D51-4212-8E4B-314878661497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-Fintranet.ThirdParty", "Infrastracture\5-Fintranet.ThirdParty\5-Fintranet.ThirdParty.csproj", "{1C51F525-EB61-470E-B8B8-C14EBDFBDF33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-Fintranet.ThirdParty", "Infrastracture\5-Fintranet.ThirdParty\5-Fintranet.ThirdParty.csproj", "{1C51F525-EB61-470E-B8B8-C14EBDFBDF33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-Fintranet.Framework", "Infrastracture\6-Fintranet.Framework\6-Fintranet.Framework.csproj", "{BE4CFAC6-E865-4D70-BD0C-4D11DE41C37B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6-Fintranet.Framework", "Infrastracture\6-Fintranet.Framework\6-Fintranet.Framework.csproj", "{BE4CFAC6-E865-4D70-BD0C-4D11DE41C37B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7-Fintranet.Mvc", "Presentation\7-Fintranet.Mvc\7-Fintranet.Mvc.csproj", "{5CB5BDC3-19D0-4C2F-9B6D-32E0C6D45AA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7-Fintranet.Mvc", "Presentation\7-Fintranet.Mvc\7-Fintranet.Mvc.csproj", "{5CB5BDC3-19D0-4C2F-9B6D-32E0C6D45AA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8-Fintranet.Api", "Presentation\8-Fintranet.Api\8-Fintranet.Api.csproj", "{5E7ECC4E-AF10-480F-9ED6-61E20394FA11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8-Fintranet.Api", "Presentation\8-Fintranet.Api\8-Fintranet.Api.csproj", "{5E7ECC4E-AF10-480F-9ED6-61E20394FA11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

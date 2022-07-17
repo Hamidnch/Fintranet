@@ -2,8 +2,9 @@
 
 namespace _3_Fintranet.Application.Features.Doctors.Dtos
 {
-    public class DoctorDto
+    public class DoctorDto<TKey>
     {
+        public TKey? Id { get; set; }
         public Guid DoctorGuid { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

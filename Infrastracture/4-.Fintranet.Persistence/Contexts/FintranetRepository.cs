@@ -21,7 +21,7 @@ namespace _4_.Fintranet.Persistence.Contexts
         #endregion Fields
 
         public DbSet<T>? Get => _dbSet;
-        public IQueryable<T>? Table => _dbSet.AsNoTracking();
+        public IQueryable<T> Table => _dbSet.AsNoTracking();
 
         public IReadOnlyList<T> GetAll(bool trackChanges = true)
         {
