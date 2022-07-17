@@ -1,6 +1,7 @@
 ﻿using _2_Fintranet.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using _1_Fintranet.Common.Constants;
 using _3_Fintranet.Application.Interfaces;
 
 namespace _4_.Fintranet.Persistence.Contexts
@@ -8,9 +9,7 @@ namespace _4_.Fintranet.Persistence.Contexts
     public class FintranetContext : DbContext, IFintranetContext
     {
         public FintranetContext(DbContextOptions<FintranetContext> options) : base(options)
-        {
-
-        }
+        {}
 
         #region DbSets
 
@@ -23,7 +22,7 @@ namespace _4_.Fintranet.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("nch");
+            modelBuilder.HasDefaultSchema(DefaultConstants.DefaultSchema);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
