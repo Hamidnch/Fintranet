@@ -15,9 +15,7 @@ namespace _4_.Fintranet.Persistence.MappingConfigs
             //builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Id).IsRequired().UseIdentityColumn();
 
-            //builder.HasIndex(x => x.Email).HasDatabaseName("IX_Doctor_Email").IsUnique();
-            //builder.HasIndex(x => x.MedicalSystemNumber).HasDatabaseName("IX_Doctor_MedicalSystemNumber").IsUnique();
-
+            builder.HasIndex(x => new { x.FirstName, x.LastName, x.DateOfBirth }).IsUnique().HasFilter(null);
             builder.HasIndex(x => new { x.Email, x.MedicalSystemNumber })
                 .HasDatabaseName("IX_Doctor_Email_MedicalSystemNumber").IsUnique();
 
@@ -27,7 +25,7 @@ namespace _4_.Fintranet.Persistence.MappingConfigs
             builder.Property(x => x.MedicalSystemNumber).HasMaxLength(100).IsRequired();
             builder.Property(x => x.BusinessMobileNumber).HasMaxLength(11).IsRequired(false);
             builder.Property(x => x.PersonalMobileNumber).HasMaxLength(11).IsRequired(false);
-            builder.Property(x => x.PhoneNumber).HasMaxLength(100).IsRequired(false);
+            builder.Property(x => x.PhoneNumber).HasConversion<ulong>();
             builder.Property(x => x.GenderType).HasMaxLength(1).IsRequired();
             builder.Property(x => x.TurningMethod).IsRequired(false);
             builder.Property(x => x.Website).HasMaxLength(400).IsRequired(false);
