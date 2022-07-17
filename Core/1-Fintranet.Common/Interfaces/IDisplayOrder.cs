@@ -1,4 +1,4 @@
-﻿namespace _3_Fintranet.Application.Interfaces.Commons;
+﻿namespace _1_Fintranet.Common.Interfaces;
 
 public interface IDisplayOrder
 {

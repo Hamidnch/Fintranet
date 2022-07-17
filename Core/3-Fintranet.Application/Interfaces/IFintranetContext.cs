@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace _3_Fintranet.Application.Interfaces.Commons;
+namespace _3_Fintranet.Application.Interfaces;
 
 public interface IFintranetContext
 {

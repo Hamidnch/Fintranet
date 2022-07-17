@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using _3_Fintranet.Application.Interfaces.Commons;
+using _1_Fintranet.Common.Interfaces;
 
 namespace _2_Fintranet.Domain.Commons
 {
@@ -71,7 +71,7 @@ namespace _2_Fintranet.Domain.Commons
         }
     }
 
-    public abstract class BaseEntity : BaseEntity<int>, ISoftDeletedEntity
+    public abstract class BaseEntity : BaseEntity<Guid>, ISoftDeletedEntity
     {
         public bool Deleted { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿using _1_Fintranet.Common.Enums;
+using _1_Fintranet.Common.Interfaces;
 using _2_Fintranet.Domain.Commons;
-using _3_Fintranet.Application.Interfaces.Commons;
 
 namespace _2_Fintranet.Domain.Entities
 {
