@@ -64,6 +64,10 @@ namespace _2_Fintranet.Domain.Entities
         /// </summary>
         public string? Email { get; set; }
         /// <summary>
+        /// Gets or sets date of birth 
+        /// </summary>
+        public DateTime? DateOfBirth { get; set; }
+        /// <summary>
         /// Gets or sets the last IP address
         /// </summary>
         public string? LastIpAddress { get; set; }
