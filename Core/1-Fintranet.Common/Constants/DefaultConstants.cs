@@ -6,5 +6,6 @@
         public const string DoctorTableName = "Doctors";
         public const string PatientTableName = "Patients";
         public const string DoctorOfficeTableName = "DoctorOffices";
+        public const string DoctorDoctorOfficeMappingTableName = "DoctorDoctorOfficeMapping";
     }
 }
