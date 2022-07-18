@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace _3_Fintranet.Application.Features.Doctors.Services
+namespace _3_Fintranet.Application.Features.Doctors.Managers
 {
     public class DoctorManager : IDoctorManager
     {
@@ -25,9 +25,9 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
             if (!string.IsNullOrWhiteSpace(dto.SearchText))
             {
                 doctorRepositories = doctorRepositories?.Where(d =>
-                    (d.FirstName != null && (d.FirstName.Contains(dto.SearchText)) ||
-                     (d.LastName != null && d.LastName.Contains(dto.SearchText)) ||
-                     (d.Email != null && d.Email.Contains(dto.SearchText))));
+                    d.FirstName != null && d.FirstName.Contains(dto.SearchText) ||
+                     d.LastName != null && d.LastName.Contains(dto.SearchText) ||
+                     d.Email != null && d.Email.Contains(dto.SearchText));
             }
 
             if (doctorRepositories == null) return default;
@@ -107,7 +107,7 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
             dr.NationalCode = doctor.NationalCode;
             dr.Website = doctor.Website;
             dr.MedicalHistory = doctor.MedicalHistory;
-            
+
             await _doctorRepository.UpdateAsync(dr);
             return _mapper.Map<DoctorDto>(dr);
         }

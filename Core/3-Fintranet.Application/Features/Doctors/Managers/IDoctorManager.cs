@@ -1,6 +1,7 @@
 ﻿using _2_Fintranet.Domain.Entities;
 using _3_Fintranet.Application.Features.Doctors.Dtos;
-namespace _3_Fintranet.Application.Features.Doctors.Services;
+
+namespace _3_Fintranet.Application.Features.Doctors.Managers;
 
 public interface IDoctorManager
 {

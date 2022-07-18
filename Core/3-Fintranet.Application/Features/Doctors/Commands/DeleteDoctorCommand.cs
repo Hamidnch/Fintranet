@@ -1,4 +1,4 @@
-﻿using _3_Fintranet.Application.Features.Doctors.Services;
+﻿using _3_Fintranet.Application.Features.Doctors.Managers;
 using FluentValidation;
 using MediatR;
 

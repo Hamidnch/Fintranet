@@ -4,6 +4,7 @@ using _2_Fintranet.Domain.Commons;
 using _2_Fintranet.Domain.Entities;
 using _3_Fintranet.Application.Features.Doctors.Commands;
 using _3_Fintranet.Application.Features.Doctors.Dtos;
+using _3_Fintranet.Application.Features.Doctors.Managers;
 using _3_Fintranet.Application.Features.Doctors.Queries;
 using _3_Fintranet.Application.Features.Doctors.Services;
 using _3_Fintranet.Application.Interfaces;

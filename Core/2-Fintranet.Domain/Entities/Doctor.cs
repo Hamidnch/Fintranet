@@ -8,6 +8,26 @@ namespace _2_Fintranet.Domain.Entities
     /// </summary>
     public class Doctor : Person, IDisplayOrder
     {
+        //private readonly Doctor _doctor = new Doctor();
+
+        //public Doctor SetFirstNameAndLastName(string? firstName, string? lastName)
+        //{
+        //    _doctor.FirstName = firstName;
+        //    _doctor.LastName = lastName;
+        //    return _doctor;
+        //}
+
+        //public Doctor SetMedicalSystemNumber(string? medicalSystemNumber)
+        //{
+        //    _doctor.MedicalSystemNumber = medicalSystemNumber;
+        //    return _doctor;
+        //}
+
+        //public Doctor BuildDoctor()
+        //{
+        //    return _doctor;
+        //}
+
         public Doctor()
         {
             DoctorGuid = Guid.NewGuid();

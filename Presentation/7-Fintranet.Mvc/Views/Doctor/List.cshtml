@@ -1,0 +1,18 @@
+﻿@model IEnumerable<_6_Fintranet.Framework.Models.DoctorModel>
+
+<h1>All Doctors</h1>
+@{
+    foreach (var doctor in Model)
+    {
+        <ul>
+            <li>@doctor.Id</li>
+            <li>@doctor.FullName</li>
+            <li>@doctor.Email</li>
+            <li>@doctor.MedicalSystemNumber</li>
+            <li>@doctor.BusinessMobileNumber</li>
+            <li>@doctor.NationalCode</li>
+        </ul>
+    }
+}
+
+

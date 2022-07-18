@@ -1,5 +1,5 @@
 ﻿using _3_Fintranet.Application.Features.Doctors.Dtos;
-using _3_Fintranet.Application.Features.Doctors.Services;
+using _3_Fintranet.Application.Features.Doctors.Managers;
 using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Queries

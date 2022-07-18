@@ -2,8 +2,8 @@
 using _1_Fintranet.Common.Validators;
 using _2_Fintranet.Domain.Entities;
 using _3_Fintranet.Application.Features.Doctors.Dtos;
+using _3_Fintranet.Application.Features.Doctors.Managers;
 using _3_Fintranet.Application.Features.Doctors.Notifications;
-using _3_Fintranet.Application.Features.Doctors.Services;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
