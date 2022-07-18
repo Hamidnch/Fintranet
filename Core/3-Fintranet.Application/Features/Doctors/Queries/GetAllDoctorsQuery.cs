@@ -27,26 +27,10 @@ namespace _3_Fintranet.Application.Features.Doctors.Queries
 
                 var doctorsList = doctors.Select(d => _mapper.Map<DoctorDto>(d)).ToList();
 
-                //new DoctorDto<int>
-                //{
-                //    Id = d.Id,
-                //    DoctorGuid = d.DoctorGuid,
-                //    BusinessMobileNumber = d.BusinessMobileNumber,
-                //    Email = d.Email,
-                //    FirstName = d.FirstName,
-                //    LastName = d.LastName,
-                //    MedicalHistory = d.MedicalHistory,
-                //    MedicalSystemNumber = d.MedicalSystemNumber,
-                //    PersonalMobileNumber = d.PersonalMobileNumber,
-                //    PhoneNumber = d.PhoneNumber,
-                //    TurningMethod = d.TurningMethod,
-                //    Website = d.Website
-                //}).ToList();
-
                 var response = new ResponseDoctorDto
                 {
                     DoctorDtos = doctorsList,
-                    Rows = doctorsList.Count()
+                    Rows = doctorsList.Count
                 };
 
                 return response;

@@ -4,9 +4,9 @@ using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Queries
 {
-    public record GetDoctorByIdQuery(int? Id) : IRequest<DoctorDto>
+    public record GetDoctorByEmailQuery(string? Email) : IRequest<DoctorDto>
     {
-        public class GetDoctorByIdQueryHandler : IRequestHandler<GetDoctorByIdQuery, DoctorDto>
+        public class GetDoctorByIdQueryHandler : IRequestHandler<GetDoctorByEmailQuery, DoctorDto>
         {
             private readonly IDoctorManager _doctorManager;
 
@@ -15,10 +15,10 @@ namespace _3_Fintranet.Application.Features.Doctors.Queries
                 _doctorManager = doctorManager;
             }
 
-            public async Task<DoctorDto> Handle(GetDoctorByIdQuery query, CancellationToken cancellationToken)
+            public async Task<DoctorDto> Handle(GetDoctorByEmailQuery query, CancellationToken cancellationToken)
             {
-                if (query.Id != null)
-                    return await _doctorManager.GetByIdAsync(query.Id);
+                if (query.Email != null)
+                    return await _doctorManager.GetByEmailAsync(query.Email);
 
                 return new DoctorDto();
             }

@@ -5,7 +5,9 @@ namespace _3_Fintranet.Application.Features.Doctors.Services;
 public interface IDoctorManager
 {
     Task<ResponseDoctorDto?> GetAllAsync(RequestDoctorDto dto);
-    Task<DoctorDto> GetByIdAsync(int id);
+    Task<DoctorDto> GetByIdAsync(int? id, bool trucking = true);
+    Task<DoctorDto> GetByEmailAsync(string? email, bool trucking = true);
+    Task<bool> ExistsAsync(string email);
     Task<DoctorDto> CreateAsync(Doctor doctor);
     Task<DoctorDto> UpdateAsync(Doctor doctor);
     Task DeleteAsync(int doctorId);

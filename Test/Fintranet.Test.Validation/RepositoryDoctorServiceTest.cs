@@ -1,5 +1,6 @@
 ﻿using _1_Fintranet.Common.Constants;
 using _1_Fintranet.Common.Enums;
+using _2_Fintranet.Domain.Commons;
 using _2_Fintranet.Domain.Entities;
 using _3_Fintranet.Application.Interfaces;
 using _4_.Fintranet.Persistence.Contexts;
@@ -8,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Fintranet.Test.Validation
 {
-    public class RepositoryServiceTest
+    public class RepositoryDoctorServiceTest
     {
         private static FintranetContext CreateDbContext()
         {
@@ -24,11 +25,25 @@ namespace Fintranet.Test.Validation
             return new FintranetContext(builder.Options);
         }
 
+        private static IFintranetRepository<T> GetFintranetRepository<T>() where T : BaseEntity
+        {
+            var context = CreateDbContext();
+            IFintranetRepository<T> fintranetRepository = new FintranetRepository<T>(context);
+            return fintranetRepository;
+        }
+
+        [Fact]
+        public async Task Count_Of_Doctors_Test()
+        {
+            var repository = GetFintranetRepository<Doctor>();
+            var allDoctors = await repository.GetAllAsync(false);
+            Assert.Equal(2, allDoctors.Count);
+        }
+
         [Fact]
         public async Task Create_Doctor_Success_Test()
         {
-            var context = CreateDbContext();
-            IFintranetRepository<Doctor> fintranetRepository = new FintranetRepository<Doctor>(context);
+            var repository = GetFintranetRepository<Doctor>();
 
             var doctor = new Doctor(
                 "Hamid", "Nezamivand Chegini", GenderType.Male, 1, "4323511086",
@@ -36,22 +51,24 @@ namespace Fintranet.Test.Validation
                 "09124820700", null, null,
                 TurningMethod.ByPhone, 15, null);
 
-            await fintranetRepository.InsertAsync(doctor);
+            await repository.InsertAsync(doctor);
         }
 
         [Fact]
         public async Task Create_Doctor_Success_Test2()
         {
-            var context = CreateDbContext();
-            IFintranetRepository<Doctor> fintranetRepository = new FintranetRepository<Doctor>(context);
-            
-            var doctor = new Doctor(
-                "Ali", "Mostafa", GenderType.Male, 1, "43235116025",
-                "AliMostafa@gmail.com", "98922",
-                "09195263526", null, null,
-                TurningMethod.ByInternet, 8, null);
+            var repository = GetFintranetRepository<Doctor>();
 
-            await fintranetRepository.InsertAsync(doctor);
+            var doctor = new Doctor("Ali", "Mostafa", GenderType.Male,
+                1, "43235116025", "AliMostafa@gmail.com",
+                "98922", "09195263526",
+                null, null, TurningMethod.ByInternet,
+                8, null);
+
+            await repository.InsertAsync(doctor);
+
+            var searchDoctor = repository.Find(d => d.Email == "AliMostafa@gmail.com").FirstOrDefault();
+            Assert.Equal(doctor.FirstName, searchDoctor?.FirstName);
         }
     }
 }
