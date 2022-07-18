@@ -9,15 +9,15 @@ using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Commands
 {
-    public record UpdateDoctorCommand(DoctorDto<Guid> DoctorDto) : IRequest<DoctorDto<Guid>>
+    public record UpdateDoctorCommand(DoctorDto DoctorDto) : IRequest<DoctorDto>
     {
         public class UpdateDoctorCommandValidator : AbstractValidator<UpdateDoctorCommand>
         {
             public UpdateDoctorCommandValidator()
             {
                 RuleFor(c => c.DoctorDto.Id)
-                    .NotEqual(Guid.Empty)
-                    .WithMessage("The doctor id must not be empty");
+                    .NotEqual(0)
+                    .WithMessage("The doctor id must not be zero");
 
                 RuleFor(c => c.DoctorDto.FirstName)
                     .NotEmpty().WithMessage("Please ensure you have entered the first name")
@@ -45,18 +45,18 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
             }
         }
 
-        public record UpdateDoctorCommandHandler : IRequestHandler<UpdateDoctorCommand, DoctorDto<Guid>>
+        public record UpdateDoctorCommandHandler : IRequestHandler<UpdateDoctorCommand, DoctorDto>
         {
-            private readonly IDoctorManager<Guid> _doctorManager;
+            private readonly IDoctorManager _doctorManager;
             private readonly IMapper _mapper;
 
-            public UpdateDoctorCommandHandler(IDoctorManager<Guid> doctorManager, IMapper mapper)
+            public UpdateDoctorCommandHandler(IDoctorManager doctorManager, IMapper mapper)
             {
                 _doctorManager = doctorManager;
                 _mapper = mapper;
             }
 
-            public async Task<DoctorDto<Guid>> Handle(UpdateDoctorCommand request, CancellationToken cancellationToken)
+            public async Task<DoctorDto> Handle(UpdateDoctorCommand request, CancellationToken cancellationToken)
             {
                 var doctor = _mapper.Map<Doctor>(request.DoctorDto);
                 return await _doctorManager.UpdateAsync(doctor);

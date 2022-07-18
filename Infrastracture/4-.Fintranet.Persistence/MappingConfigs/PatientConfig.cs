@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace _4_.Fintranet.Persistence.MappingConfigs
 {
-    public class PatientConfig : BaseEntityTypeConfiguration<Patient>
+    public class PatientConfig : PersonEntityTypeConfiguration<Patient>
     {
         public override void Configure(EntityTypeBuilder<Patient> builder)
         {
-            builder.ToTable(name: DefaultConstants.DoctorTableName);
+            builder.ToTable(name: DefaultConstants.PatientTableName);
 
             builder.HasKey(x => x.Id);
             //builder.Property(x => x.Id).ValueGeneratedOnAdd();
@@ -22,11 +22,7 @@ namespace _4_.Fintranet.Persistence.MappingConfigs
                 .HasDatabaseName("IX_Patient_Email_DocumentNumber").IsUnique();
 
             builder.Property(x => x.DocumentNumber).HasMaxLength(20).IsRequired();
-            builder.Property(x => x.FirstName).HasMaxLength(100).IsRequired();
-            builder.Property(x => x.LastName).HasMaxLength(200).IsRequired();
-            builder.Property(p => p.FullName).HasComputedColumnSql("[LastName] + ', ' + [FirstName]");
             builder.Property(x => x.MobileNumber).HasMaxLength(100).IsRequired(false);
-            builder.Property(x => x.GenderType).HasMaxLength(1).IsRequired();
 
             builder.HasQueryFilter(x => !x.Deleted);
 

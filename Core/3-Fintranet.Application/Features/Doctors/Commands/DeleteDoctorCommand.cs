@@ -4,22 +4,22 @@ using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Commands
 {
-    public record DeleteDoctorCommand(Guid Id) : IRequest<Unit>
+    public record DeleteDoctorCommand(int Id) : IRequest<Unit>
     {
         public class DeleteDoctorCommandValidator : AbstractValidator<DeleteDoctorCommand>
         {
             public DeleteDoctorCommandValidator()
             {
                 RuleFor(c => c.Id)
-                    .NotEqual(Guid.Empty)
+                    .NotEqual(0)
                     .WithMessage("The doctor id must not be empty");
             }
         }
         public record DeleteDoctorCommandHandler : IRequestHandler<DeleteDoctorCommand, Unit>
         {
-            private readonly IDoctorManager<Guid> _doctorManager;
+            private readonly IDoctorManager _doctorManager;
 
-            public DeleteDoctorCommandHandler(IDoctorManager<Guid> doctorManager)
+            public DeleteDoctorCommandHandler(IDoctorManager doctorManager)
             {
                 _doctorManager = doctorManager;
             }

@@ -4,18 +4,18 @@ using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Queries
 {
-    public record GetDoctorByIdQuery(Guid Id) : IRequest<DoctorDto<Guid>>
+    public record GetDoctorByIdQuery(int Id) : IRequest<DoctorDto>
     {
-        public class GetDoctorByIdQueryHandler : IRequestHandler<GetDoctorByIdQuery, DoctorDto<Guid>>
+        public class GetDoctorByIdQueryHandler : IRequestHandler<GetDoctorByIdQuery, DoctorDto>
         {
-            private readonly IDoctorManager<Guid> _doctorManager;
+            private readonly IDoctorManager _doctorManager;
 
-            public GetDoctorByIdQueryHandler(IDoctorManager<Guid> doctorManager)
+            public GetDoctorByIdQueryHandler(IDoctorManager doctorManager)
             {
                 _doctorManager = doctorManager;
             }
 
-            public async Task<DoctorDto<Guid>> Handle(GetDoctorByIdQuery query, CancellationToken cancellationToken)
+            public async Task<DoctorDto> Handle(GetDoctorByIdQuery query, CancellationToken cancellationToken)
             {
                 return await _doctorManager.GetByIdAsync(query.Id);
             }

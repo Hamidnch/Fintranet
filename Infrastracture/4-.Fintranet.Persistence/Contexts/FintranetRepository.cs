@@ -33,10 +33,10 @@ namespace _4_.Fintranet.Persistence.Contexts
             return trackChanges ? await _dbSet.ToListAsync() : await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(Guid? id)
+        public async Task<T?> GetByIdAsync(int? id)
         {
             if (id is null) return null;
-            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value);
+            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IReadOnlyList<T>> GetPagedAsync(int pageNumber, int pageSize)

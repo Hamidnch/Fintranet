@@ -5,8 +5,8 @@ namespace _3_Fintranet.Application.Features.Doctors.Notifications
 {
     public class CreateDoctorEvent : INotification
     {
-        public Guid Id { get; set; }
-        public CreateDoctorEvent(Guid id)
+        public int? Id { get; set; }
+        public CreateDoctorEvent(int? id)
         {
             Id = id;
         }

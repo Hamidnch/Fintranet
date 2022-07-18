@@ -14,6 +14,7 @@ namespace _2_Fintranet.Domain.Entities
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.FullName = $"{firstName} {lastName}";
         }
 
         protected Person(string? firstName, string? lastName, GenderType genderType)
@@ -21,6 +22,7 @@ namespace _2_Fintranet.Domain.Entities
             this.FirstName = firstName;
             this.LastName = lastName;
             this.GenderType = genderType;
+            this.FullName = $"{firstName} {lastName}";
         }
 
         protected Person(string? firstName, string? lastName, GenderType genderType,
@@ -28,6 +30,7 @@ namespace _2_Fintranet.Domain.Entities
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.FullName = $"{firstName} {lastName}";
             this.GenderType = genderType;
             this.PictureId = pictureId;
             this.NationalCode = nationalCode;
@@ -44,7 +47,7 @@ namespace _2_Fintranet.Domain.Entities
         public string? LastName { get; set; }
 
         [NotMapped]
-        public string FullName => $"{FirstName + " " + LastName}";
+        public string? FullName { get; set; }
 
         /// <summary>
         /// Gets or sets gender type

@@ -1,4 +1,10 @@
+using _6_Fintranet.Framework.Ioc;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var services = builder.Services;
+var configuration = builder.Configuration;
+services.AddFintranetServices(configuration: configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

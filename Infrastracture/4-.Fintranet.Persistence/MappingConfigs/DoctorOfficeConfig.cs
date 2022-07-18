@@ -19,7 +19,10 @@ namespace _4_.Fintranet.Persistence.MappingConfigs
             builder.Property(x => x.Phone1).HasMaxLength(250).IsRequired();
             builder.Property(x => x.Phone2).HasMaxLength(250).IsRequired();
             builder.Property(x => x.FullAddress).HasMaxLength(500).IsRequired();
-            builder.Property(x => x.WhatsUp).HasMaxLength(400).IsRequired(false);
+            builder.Property(x => x.WhatsUp).HasMaxLength(100).IsRequired(false);
+            builder.Property(x => x.FaxNumber).HasMaxLength(30).IsRequired(false);
+            builder.Property(x => x.Province).HasMaxLength(50).IsRequired(false);
+            builder.Property(x => x.City).HasMaxLength(50).IsRequired(false);
 
             base.Configure(builder);
         }

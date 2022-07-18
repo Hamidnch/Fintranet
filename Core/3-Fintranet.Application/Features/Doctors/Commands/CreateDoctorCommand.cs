@@ -10,7 +10,7 @@ using MediatR;
 
 namespace _3_Fintranet.Application.Features.Doctors.Commands
 {
-    public record CreateDoctorCommand(DoctorDto<Guid> DoctorDto) : IRequest<DoctorDto<Guid>>
+    public record CreateDoctorCommand(DoctorDto DoctorDto) : IRequest<DoctorDto>
     {
         public class CreateDoctorCommandValidator : AbstractValidator<CreateDoctorCommand>
         {
@@ -41,19 +41,19 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
                     .WithMessage("The doctor mobile number is invalid.");
             }
         }
-        public class CreateDoctorCommandCommandHandler : IRequestHandler<CreateDoctorCommand, DoctorDto<Guid>>
+        public class CreateDoctorCommandCommandHandler : IRequestHandler<CreateDoctorCommand, DoctorDto>
         {
             private readonly IMediator _mediator;
             private readonly IMapper _mapper;
-            private readonly IDoctorManager<Guid> _doctorManager;
-            public CreateDoctorCommandCommandHandler(IMapper mapper, IMediator mediator, IDoctorManager<Guid> doctorManager)
+            private readonly IDoctorManager _doctorManager;
+            public CreateDoctorCommandCommandHandler(IMapper mapper, IMediator mediator, IDoctorManager doctorManager)
             {
                 _mapper = mapper;
                 _mediator = mediator;
                 _doctorManager = doctorManager;
             }
 
-            public async Task<DoctorDto<Guid>> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
+            public async Task<DoctorDto> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
             {
                 //Doctor doctor = new Doctor(
                 //    Guid.NewGuid(),
@@ -67,7 +67,7 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
                 var doctor = _mapper.Map<Doctor>(request.DoctorDto);
 
                 //Store doctor in db
-                DoctorDto<Guid>? response = await _doctorManager.CreateAsync(doctor: doctor);
+                DoctorDto? response = await _doctorManager.CreateAsync(doctor: doctor);
 
                 // Raising Event ...
                 await _mediator.Publish(

@@ -4,7 +4,7 @@
     {
         public const string DefaultConnectionString = "DefaultConnectionString";
 
-        public const string DefaultSchema = "PS";
+        public const string DefaultSchema = "nch";
         public const string DoctorTableName = "Doctors";
         public const string PatientTableName = "Patients";
         public const string DoctorOfficeTableName = "DoctorOffices";

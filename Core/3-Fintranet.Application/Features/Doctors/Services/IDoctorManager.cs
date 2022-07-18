@@ -2,11 +2,11 @@
 using _3_Fintranet.Application.Features.Doctors.Dtos;
 namespace _3_Fintranet.Application.Features.Doctors.Services;
 
-public interface IDoctorManager<TKey> where TKey : struct
+public interface IDoctorManager
 {
     Task<ResponseDoctorDto?> GetAllAsync(RequestDoctorDto dto);
-    Task<DoctorDto<TKey>> GetByIdAsync(Guid id);
-    Task<DoctorDto<TKey>> CreateAsync(Doctor doctor);
-    Task<DoctorDto<TKey>> UpdateAsync(Doctor doctor);
-    Task DeleteAsync(Guid doctorId);
+    Task<DoctorDto> GetByIdAsync(int id);
+    Task<DoctorDto> CreateAsync(Doctor doctor);
+    Task<DoctorDto> UpdateAsync(Doctor doctor);
+    Task DeleteAsync(int doctorId);
 }

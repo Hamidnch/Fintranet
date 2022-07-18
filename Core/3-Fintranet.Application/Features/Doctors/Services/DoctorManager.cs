@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _3_Fintranet.Application.Features.Doctors.Services
 {
-    public class DoctorManager : IDoctorManager<Guid>
+    public class DoctorManager : IDoctorManager
     {
         private readonly IMapper _mapper;
         private readonly IFintranetRepository<Doctor> _doctorRepository;
@@ -32,8 +32,8 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
             if (doctorRepositories == null) return default;
 
             var doctorList = await doctorRepositories
-                .Select(doctor => _mapper.Map<Doctor, DoctorDto<Guid>>(doctor))
-                //.Select(p => new DoctorDto<Guid>
+                .Select(doctor => _mapper.Map<Doctor, DoctorDto>(doctor))
+                //.Select(p => new DoctorDto<int>
                 //{
                 //    Id = p.Id,
                 //    FirstName = p.FirstName,
@@ -42,7 +42,7 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
                 //    PhoneNumber = p.PhoneNumber,
                 //    MedicalSystemNumber = p.MedicalSystemNumber,
                 //    BusinessMobileNumber = p.BusinessMobileNumber,
-                //    DoctorGuid = p.DoctorGuid,
+                //    Doctorint = p.Doctorint,
                 //    MedicalHistory = p.MedicalHistory,
                 //    PersonalMobileNumber = p.PersonalMobileNumber,
                 //    TurningMethod = p.TurningMethod,
@@ -62,26 +62,26 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
 
         }
 
-        public async Task<DoctorDto<Guid>> GetByIdAsync(Guid id)
+        public async Task<DoctorDto> GetByIdAsync(int id)
         {
-            return _mapper.Map<DoctorDto<Guid>>(await _doctorRepository.Table.AsNoTracking()
+            return _mapper.Map<DoctorDto>(await _doctorRepository.Table.AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id));
         }
 
-        public async Task<DoctorDto<Guid>> CreateAsync(Doctor doctor)
+        public async Task<DoctorDto> CreateAsync(Doctor doctor)
         {
             await _doctorRepository.InsertAsync(doctor);
 
-            return _mapper.Map<DoctorDto<Guid>>(doctor);
+            return _mapper.Map<DoctorDto>(doctor);
         }
 
-        public async Task<DoctorDto<Guid>> UpdateAsync(Doctor doctor)
+        public async Task<DoctorDto> UpdateAsync(Doctor doctor)
         {
             await _doctorRepository.UpdateAsync(doctor);
-            return _mapper.Map<DoctorDto<Guid>>(doctor);
+            return _mapper.Map<DoctorDto>(doctor);
         }
 
-        public async Task DeleteAsync(Guid doctorId)
+        public async Task DeleteAsync(int doctorId)
         {
             var doctor = (await _doctorRepository.GetByIdAsync(doctorId))!;
             await _doctorRepository.DeleteAsync(doctor);

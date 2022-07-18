@@ -9,7 +9,7 @@ namespace _3_Fintranet.Application.Interfaces
         IQueryable<T> Table { get; }
         IReadOnlyList<T> GetAll(bool trackChanges = true);
         Task<IReadOnlyList<T>> GetAllAsync(bool trackChanges);
-        Task<T?> GetByIdAsync(Guid? id);
+        Task<T?> GetByIdAsync(int? id);
         Task<IReadOnlyList<T>> GetPagedAsync(int pageNumber, int pageSize);
         Task InsertAsync(T entity);
         Task UpdateAsync(T entity);

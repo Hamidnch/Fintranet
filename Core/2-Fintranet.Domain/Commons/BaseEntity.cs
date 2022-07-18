@@ -9,16 +9,17 @@ namespace _2_Fintranet.Domain.Commons
 
     public interface IBaseEntity<out TKey> : IBaseEntity
     {
-        public TKey Id { get; }
+        public TKey? Id { get; }
     }
 
     public abstract class BaseEntity<TKey> : IBaseEntity<TKey?>
     {
-        public virtual TKey Id { get; set; }
+        public virtual TKey? Id { get; set; }
 
         [Timestamp]
         public byte[]? RowVersion { get; set; }
-        public DateTimeOffset CreatedDateTime => DateTimeOffset.UtcNow;
+
+        public DateTimeOffset CreatedDateTime { get; set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? UpdatedDateTime { get; set; }
 
         private int? _requestedHashCode;
@@ -49,9 +50,12 @@ namespace _2_Fintranet.Domain.Commons
             if (!IsTransient())
             {
                 if (Id != null) 
+                    // ReSharper disable once NonReadonlyMemberInGetHashCode
                     _requestedHashCode ??= Id.GetHashCode() ^ 31;
 
+#pragma warning disable CS8629
                 return _requestedHashCode.Value;
+#pragma warning restore CS8629
             }
             else
                 return base.GetHashCode();
@@ -71,7 +75,7 @@ namespace _2_Fintranet.Domain.Commons
         }
     }
 
-    public abstract class BaseEntity : BaseEntity<Guid>, ISoftDeletedEntity
+    public abstract class BaseEntity : BaseEntity<int>, ISoftDeletedEntity
     {
         public bool Deleted { get; set; }
     }
