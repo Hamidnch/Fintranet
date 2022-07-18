@@ -14,10 +14,6 @@ namespace _4_.Fintranet.Persistence.MappingConfigs
             builder.HasKey(x => x.Id);
             //builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Id).IsRequired().UseIdentityColumn();
-
-            //builder.HasIndex(x => x.Email).HasDatabaseName("IX_Doctor_Email").IsUnique();
-            //builder.HasIndex(x => x.MedicalSystemNumber).HasDatabaseName("IX_Doctor_MedicalSystemNumber").IsUnique();
-
             builder.HasIndex(x => new { x.Email, x.DocumentNumber })
                 .HasDatabaseName("IX_Patient_Email_DocumentNumber").IsUnique();
 

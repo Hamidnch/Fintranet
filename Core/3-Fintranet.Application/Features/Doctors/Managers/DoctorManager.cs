@@ -3,7 +3,6 @@ using _3_Fintranet.Application.Features.Doctors.Dtos;
 using _3_Fintranet.Application.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace _3_Fintranet.Application.Features.Doctors.Managers
 {
@@ -50,8 +49,9 @@ namespace _3_Fintranet.Application.Features.Doctors.Managers
         public async Task<DoctorDto> GetByIdAsync(int? id, bool trucking = true)
         {
             if (id == null) return new DoctorDto();
-            return trucking ? _mapper.Map<DoctorDto>(await _doctorRepository.Table.FirstOrDefaultAsync(x => x.Id == id))
-                : _mapper.Map<DoctorDto>(_doctorRepository.Get.FirstOrDefaultAsync(x => x.Id == id));
+            return trucking ? 
+                _mapper.Map<DoctorDto>(await _doctorRepository.Table.FirstOrDefaultAsync(x => x.Id == id)) :
+                _mapper.Map<DoctorDto>(_doctorRepository.Get.FirstOrDefaultAsync(x => x.Id == id));
         }
 
         public async Task<DoctorDto> GetByEmailAsync(string? email, bool trucking = true)
@@ -64,7 +64,8 @@ namespace _3_Fintranet.Application.Features.Doctors.Managers
 
         public async Task<bool> ExistsAsync(string email)
         {
-            return await _doctorRepository.Table.AnyAsync(d => d.Email != null && d.Email.ToLower() == email.ToLower());
+            return await _doctorRepository.Table.AnyAsync(d => 
+                d.Email != null && d.Email.ToLower() == email.ToLower());
         }
 
         public async Task<DoctorDto> CreateAsync(Doctor doctor)

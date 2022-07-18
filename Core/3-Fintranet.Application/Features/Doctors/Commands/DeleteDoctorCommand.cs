@@ -28,9 +28,6 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
             {
                 await _doctorManager.DeleteAsync(request.Id);
                 return Unit.Value;
-
-                //DoctorDto doctorDto = await _doctorManager.GetByIdAsync(request.Id);
-                //await _doctorManager.DeleteAsync(doctorDto);
             }
         }
     }

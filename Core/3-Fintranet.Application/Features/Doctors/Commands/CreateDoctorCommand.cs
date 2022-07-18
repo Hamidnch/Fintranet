@@ -55,19 +55,8 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
 
             public async Task<DoctorDto> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
             {
-                //Doctor doctor = new Doctor(
-                //    Guid.NewGuid(),
-                //    request.DoctorDto.Firstname,
-                //    request.DoctorDto.Lastname,
-                //    request.DoctorDto.DateOfBirth,
-                //    request.DoctorDto.PhoneNumber,
-                //    request.DoctorDto.Email,
-                //    request.DoctorDto.BankAccountNumber);
-
                 var doctor = _mapper.Map<Doctor>(request.DoctorDto);
-
-                //Store doctor in db
-                DoctorDto? response = await _doctorManager.CreateAsync(doctor: doctor);
+                var response = await _doctorManager.CreateAsync(doctor: doctor);
 
                 // Raising Event ...
                 await _mediator.Publish(
