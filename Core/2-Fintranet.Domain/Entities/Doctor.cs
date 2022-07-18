@@ -36,7 +36,7 @@ namespace _2_Fintranet.Domain.Entities
         public Doctor(string? firstName, string? lastName, GenderType genderType,
             int pictureId, string? nationalCode, string? email, string? medicalSystemNumber,
             string? businessMobileNumber, string? personalMobileNumber, string? phoneNumber,
-            TurningMethod? turningMethod, int? medicalHistory, string? website, int displayOrder) 
+            TurningMethod? turningMethod, int? medicalHistory, string? website) 
             : base(firstName, lastName, genderType, pictureId, nationalCode, email)
         {
             this.DoctorGuid = Guid.NewGuid();
@@ -47,7 +47,6 @@ namespace _2_Fintranet.Domain.Entities
             this.TurningMethod = turningMethod;
             this.MedicalHistory = medicalHistory;
             this.Website = website;
-            this.DisplayOrder = displayOrder;
         }
 
         /// <summary>

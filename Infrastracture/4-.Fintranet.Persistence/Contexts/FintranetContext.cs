@@ -8,6 +8,10 @@ namespace _4_.Fintranet.Persistence.Contexts
 {
     public class FintranetContext : DbContext, IFintranetContext
     {
+        private FintranetContext()
+        {
+            
+        }
         public FintranetContext(DbContextOptions<FintranetContext> options) : base(options)
         {}
 
