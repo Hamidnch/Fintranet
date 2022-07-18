@@ -58,28 +58,7 @@ namespace _3_Fintranet.Application.Features.Doctors.Commands
 
             public async Task<DoctorDto> Handle(UpdateDoctorCommand request, CancellationToken cancellationToken)
             {
-                //var doctor = _mapper.Map<Doctor>(request.DoctorDto);
-                //return await _doctorManager.UpdateAsync(doctor);
-
-                var doctorDto = await _doctorManager.GetByEmailAsync(request.DoctorDto.Email, false);
-
-                var doctor =
-                //_mapper.Map<Doctor>(doctorDto);
-                new Doctor
-                {
-                    Id = doctorDto.Id,
-                    DoctorGuid = doctorDto.DoctorGuid,
-                    FirstName = request.DoctorDto.FirstName,
-                    LastName = request.DoctorDto.LastName,
-                    Email = request.DoctorDto.Email,
-                    DateOfBirth = request.DoctorDto.DateOfBirth,
-                    PhoneNumber = request.DoctorDto.PhoneNumber,
-                    MedicalSystemNumber = request.DoctorDto.MedicalSystemNumber,
-                    BusinessMobileNumber = request.DoctorDto.BusinessMobileNumber,
-                    Website = request.DoctorDto.Website,
-                    NationalCode = request.DoctorDto.NationalCode
-                };
-
+                var doctor = _mapper.Map<Doctor>(request.DoctorDto);
                 return await _doctorManager.UpdateAsync(doctor);
             }
         }

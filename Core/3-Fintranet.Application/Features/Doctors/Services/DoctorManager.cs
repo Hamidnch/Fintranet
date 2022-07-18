@@ -4,7 +4,6 @@ using _3_Fintranet.Application.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
-using AutoMapper.QueryableExtensions;
 
 namespace _3_Fintranet.Application.Features.Doctors.Services
 {
@@ -30,7 +29,7 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
                      (d.LastName != null && d.LastName.Contains(dto.SearchText)) ||
                      (d.Email != null && d.Email.Contains(dto.SearchText))));
             }
-            
+
             if (doctorRepositories == null) return default;
 
             var doctorList = doctorRepositories
@@ -51,16 +50,16 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
         public async Task<DoctorDto> GetByIdAsync(int? id, bool trucking = true)
         {
             if (id == null) return new DoctorDto();
-            return trucking ? _mapper.Map<DoctorDto>(await _doctorRepository.Table.FirstOrDefaultAsync(x => x.Id == id)) 
+            return trucking ? _mapper.Map<DoctorDto>(await _doctorRepository.Table.FirstOrDefaultAsync(x => x.Id == id))
                 : _mapper.Map<DoctorDto>(_doctorRepository.Get.FirstOrDefaultAsync(x => x.Id == id));
         }
 
         public async Task<DoctorDto> GetByEmailAsync(string? email, bool trucking = true)
         {
             var allDoctors = trucking ? _doctorRepository.Table : _doctorRepository.Get;
-   
-                var doctor = await allDoctors.FirstOrDefaultAsync(d => d.Email != null && d.Email == email);
-                return _mapper.Map<DoctorDto>(doctor);
+
+            var doctor = await allDoctors.FirstOrDefaultAsync(d => d.Email != null && d.Email == email);
+            return _mapper.Map<DoctorDto>(doctor);
         }
 
         public async Task<bool> ExistsAsync(string email)
@@ -84,8 +83,33 @@ namespace _3_Fintranet.Application.Features.Doctors.Services
 
         public async Task<DoctorDto> UpdateAsync(Doctor doctor)
         {
-            await _doctorRepository.UpdateAsync(doctor);
-            return _mapper.Map<DoctorDto>(doctor);
+            var dr = await _doctorRepository.GetByIdAsync(doctor.Id);
+            if (dr == null)
+            {
+                throw new DbUpdateException("The doctor not found.");
+            }
+
+            dr.BusinessMobileNumber = doctor.BusinessMobileNumber;
+            dr.Email = doctor.Email;
+            dr.FirstName = doctor.FirstName;
+            dr.LastName = doctor.LastName;
+            dr.DisplayOrder = 1;
+            dr.DoctorGuid = doctor.DoctorGuid;
+            dr.MedicalHistory = doctor.MedicalHistory;
+            dr.MedicalSystemNumber = doctor.MedicalSystemNumber;
+            dr.PersonalMobileNumber = doctor.PersonalMobileNumber;
+            dr.Website = doctor.Website;
+            dr.PhoneNumber = doctor.PhoneNumber;
+            dr.TurningMethod = doctor.TurningMethod;
+            dr.Email = doctor.Email;
+            dr.GenderType = doctor.GenderType;
+            dr.UpdatedDateTime = DateTimeOffset.Now;
+            dr.NationalCode = doctor.NationalCode;
+            dr.Website = doctor.Website;
+            dr.MedicalHistory = doctor.MedicalHistory;
+            
+            await _doctorRepository.UpdateAsync(dr);
+            return _mapper.Map<DoctorDto>(dr);
         }
 
         public async Task DeleteAsync(int doctorId)

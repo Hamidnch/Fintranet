@@ -97,21 +97,25 @@ namespace Fintranet.Test.Validation
         }
 
         [Fact]
-        public async Task Update_Doctor_Task()
+        public async Task Update_Doctor_Test()
         {
-            var firstName = "Sadegh";
-            var lastName = "Hemmati";
-            var email = "hasanmohammadi@yahoo.com";
-            var doctorDto = await _doctorManager.GetByEmailAsync(email);
-            doctorDto.FirstName = firstName;
-            doctorDto.LastName = lastName;
-            //doctorDto.Email = "SadeghHemmati@gmail.com";
-            //doctorDto.MedicalSystemNumber = "3564231";
+            var doctorDto = await _doctorManager.GetByIdAsync(8);
+            
+            doctorDto.FirstName = "Ahmad";
+            doctorDto.LastName = "Nazem";
+            doctorDto.Email = "AhmadNazem@gmail.com";
+            doctorDto.MedicalSystemNumber = "123456";
+            doctorDto.FullName = $"{doctorDto.FirstName} {doctorDto.LastName}";
+            doctorDto.BusinessMobileNumber = "09191686710";
+            doctorDto.NationalCode = "47253325110";
+            doctorDto.TurningMethod = TurningMethod.ByPhone;
+            doctorDto.PersonalMobileNumber = "09117781206";
+            doctorDto.PhoneNumber = "0213615682";
             var updateDoctorCommand = new UpdateDoctorCommand(doctorDto);
             var handler = new UpdateDoctorCommand.UpdateDoctorCommandHandler(_doctorManager, _mapper);
             var result = await handler.Handle(updateDoctorCommand, CancellationToken.None);
 
-            result.FirstName.ShouldBe("Sadegh");
+            result.FirstName.ShouldBe("Ahmad");
         }
     }
 }

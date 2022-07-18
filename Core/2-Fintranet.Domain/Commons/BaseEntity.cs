@@ -61,7 +61,7 @@ namespace _2_Fintranet.Domain.Commons
                 return base.GetHashCode();
         }
 
-        public static bool operator ==(BaseEntity<TKey> left, BaseEntity<TKey>? right)
+        public static bool operator ==(BaseEntity<TKey>? left, BaseEntity<TKey>? right)
         {
             if (Equals(left, null))
                 return Equals(right, null) ? true : false;
