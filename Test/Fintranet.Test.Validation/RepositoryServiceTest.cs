@@ -39,5 +39,19 @@ namespace Fintranet.Test.Validation
             await fintranetRepository.InsertAsync(doctor);
         }
 
+        [Fact]
+        public async Task Create_Doctor_Success_Test2()
+        {
+            var context = CreateDbContext();
+            IFintranetRepository<Doctor> fintranetRepository = new FintranetRepository<Doctor>(context);
+            
+            var doctor = new Doctor(
+                "Ali", "Mostafa", GenderType.Male, 1, "43235116025",
+                "AliMostafa@gmail.com", "98922",
+                "09195263526", null, null,
+                TurningMethod.ByInternet, 8, null);
+
+            await fintranetRepository.InsertAsync(doctor);
+        }
     }
 }
