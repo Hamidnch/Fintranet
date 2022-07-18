@@ -6,7 +6,6 @@ using _3_Fintranet.Application.Features.Doctors.Commands;
 using _3_Fintranet.Application.Features.Doctors.Dtos;
 using _3_Fintranet.Application.Features.Doctors.Managers;
 using _3_Fintranet.Application.Features.Doctors.Queries;
-using _3_Fintranet.Application.Features.Doctors.Services;
 using _3_Fintranet.Application.Interfaces;
 using _4_.Fintranet.Persistence.Contexts;
 using _6_Fintranet.Framework.MapperConfigs;
@@ -85,14 +84,14 @@ namespace Fintranet.Test.Validation
                 "hasanmohammadi@yahoo.com", "32326363",
                 "09145623625", null, null,
                 TurningMethod.InPerson, 25, null);
-            
+
             var doctorDto = _mapper.Map<Doctor, DoctorDto>(doctor);
 
             var createDoctorCommand = new CreateDoctorCommand(doctorDto);
             var mediator = new Mock<IMediator>();
             var handler = new CreateDoctorCommand.CreateDoctorCommandCommandHandler(_mapper, mediator.Object, _doctorManager);
             var result = await handler.Handle(createDoctorCommand, CancellationToken.None);
-            
+
             result.ShouldBeOfType<DoctorDto?>();
             result.MedicalSystemNumber.ShouldBe("32326363");
         }
@@ -102,7 +101,7 @@ namespace Fintranet.Test.Validation
         public async Task Update_Doctor_Test(int doctorId)
         {
             var doctorDto = await _doctorManager.GetByIdAsync(doctorId);
-            
+
             doctorDto.FirstName = "Nima";
             doctorDto.LastName = "Shademan";
             doctorDto.Email = "NimaShademan@gmail.com";
