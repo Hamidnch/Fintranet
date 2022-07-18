@@ -96,14 +96,15 @@ namespace Fintranet.Test.Validation
             result.MedicalSystemNumber.ShouldBe("32326363");
         }
 
-        [Fact]
-        public async Task Update_Doctor_Test()
+        [Theory]
+        [InlineData(8)]
+        public async Task Update_Doctor_Test(int doctorId)
         {
-            var doctorDto = await _doctorManager.GetByIdAsync(8);
+            var doctorDto = await _doctorManager.GetByIdAsync(doctorId);
             
-            doctorDto.FirstName = "Ahmad";
-            doctorDto.LastName = "Nazem";
-            doctorDto.Email = "AhmadNazem@gmail.com";
+            doctorDto.FirstName = "Nima";
+            doctorDto.LastName = "Shademan";
+            doctorDto.Email = "NimaShademan@gmail.com";
             doctorDto.MedicalSystemNumber = "123456";
             doctorDto.FullName = $"{doctorDto.FirstName} {doctorDto.LastName}";
             doctorDto.BusinessMobileNumber = "09191686710";
@@ -115,7 +116,20 @@ namespace Fintranet.Test.Validation
             var handler = new UpdateDoctorCommand.UpdateDoctorCommandHandler(_doctorManager, _mapper);
             var result = await handler.Handle(updateDoctorCommand, CancellationToken.None);
 
-            result.FirstName.ShouldBe("Ahmad");
+            result.FirstName.ShouldBe("Nima");
+        }
+
+        [Theory]
+        [InlineData(7)]
+        public async Task Delete_Doctor_Test(int doctorId)
+        {
+            var deleteDoctorCommand = new DeleteDoctorCommand(doctorId);
+            var handler = new DeleteDoctorCommand.DeleteDoctorCommandHandler(_doctorManager);
+            await handler.Handle(deleteDoctorCommand, CancellationToken.None);
+
+            var doctorDto = await _doctorManager.GetByIdAsync(doctorId);
+
+            Assert.Null(doctorDto);
         }
     }
 }
